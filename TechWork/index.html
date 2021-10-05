@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>Tech Work Nickolay Shuliak</h2>
+    </header>
+    <ul class="list-container">
+
+    </ul>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'https://reqres.in/api/users',         /* Куда пойдет запрос */
+                method: 'get',             /* Метод передачи (post или get) */
+                dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
+                data: {text: 'Текст'},     /* Параметры передаваемые в запросе. */
+                success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+                    return `
+                    <li class="card-container">
+                        <div class="image-container">
+                          <img class="round" src="${el.avatar}">
+                
+                        </div>
+                         <div class="name-container"> 
+                             <span class="firstName">${el.first_name}</span>
+                             <span class="lastName">${el.last_name}</span>
+                            
+                         </div> 
+                         <p class="email">${el.email}</p>  
+                        </li>
+                    `        /* В переменной data содержится ответ от index.php. */
+                }
+            });
+          })
+    </script>
+</body>
+</html>
